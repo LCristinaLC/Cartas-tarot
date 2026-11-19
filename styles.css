@@ -1,0 +1,181 @@
+:root {
+    --bg-color: #12101c;
+    --card-back: #2a214a;
+    --card-front: #f4ebd9;
+    --gold: #d4af37;
+    --text-light: #f0f0f5;
+    --text-dark: #1a1a24;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    color: var(--gold);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+button {
+    background-color: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--gold);
+    color: var(--bg-color);
+}
+
+/* Tablero de cartas */
+.tablero {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 1000px;
+    margin-bottom: 2rem;
+}
+
+/* Estructura 3D de la carta */
+.carta {
+    width: 120px;
+    height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.carta:hover {
+    transform: translateY(-10px);
+}
+
+.carta-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.carta.volteada .carta-inner {
+    transform: rotateY(180deg);
+}
+
+.carta-reverso, .carta-frente {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    border: 2px solid var(--gold);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.carta-reverso {
+    background: radial-gradient(circle, #3b2d6b 0%, var(--card-back) 100%);
+    color: var(--gold);
+    font-size: 2rem;
+}
+
+.carta-frente {
+    background-color: var(--card-front);
+    color: var(--text-dark);
+    transform: rotateY(180deg);
+}
+
+.carta-frente.invertida {
+    /* Mantenemos la orientación normal (solo rotateY para el volteo 3D) */
+    transform: rotateY(180deg); 
+    background-color: #2b1d2e; /* Fondo oscuro místico */
+    color: #f4ebd9;            /* Texto claro */
+    border-color: #c94a4a;     /* Borde carmesí */
+}
+
+/* Animación de barajado */
+@keyframes barajarAnim {
+    0% { transform: translateX(0) rotate(0); }
+    25% { transform: translateX(-20px) rotate(-5deg); }
+    50% { transform: translateX(20px) rotate(5deg); }
+    75% { transform: translateX(-10px) rotate(-2deg); }
+    100% { transform: translateX(0) rotate(0); }
+}
+
+.barajando .carta {
+    animation: barajarAnim 0.4s ease-in-out 2;
+}
+
+/* Zona de Interpretación */
+.lectura {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid var(--gold);
+    padding-top: 2rem;
+}
+
+.oculto {
+    display: none;
+}
+
+.resultados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 1.5rem;
+    text-align: left;
+}
+
+.tarjeta-interpretacion {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.tarjeta-interpretacion h3 {
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
+
+.posicion-tag {
+    display: inline-block;
+    background-color: var(--gold);
+    color: var(--bg-color);
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+}

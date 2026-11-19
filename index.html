@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oráculo Digital - Lectura de Tarot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Oráculo del Tarot</h1>
+        <p id="instrucciones">Haz clic en "Barajar Mazo" para comenzar tu lectura de 3 cartas (Pasado, Presente, Futuro).</p>
+        <button id="btn-barajar">Barajar Mazo</button>
+    </header>
+
+    <main>
+        <!-- Tablero donde aparecerán las cartas boca abajo -->
+        <section id="tablero-cartas" class="tablero"></section>
+
+        <!-- Zona donde se mostrará la interpretación final -->
+        <section id="zona-lectura" class="lectura oculto">
+            <h2>Tu Interpretación</h2>
+            <div id="contenedor-resultados" class="resultados-grid"></div>
+            <button id="btn-reiniciar">Hacer otra consulta</button>
+        </section>
+    </main>
+
+    <!-- Cargamos primero los datos y luego la lógica -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
