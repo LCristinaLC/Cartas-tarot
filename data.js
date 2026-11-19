@@ -51,7 +51,7 @@ const MAZO_TAROT = [
     {
         id: 7,
         nombre: "La Muerte",
-        simbolo: "🦂",
+        simbolo: "💀",
         derecho: "Final de un ciclo, transformación profunda, transición y dejar ir lo viejo.",
         invertido: "Resistencia al cambio, estancamiento, miedo a soltar el pasado."
     },
